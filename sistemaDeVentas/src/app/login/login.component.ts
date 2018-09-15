@@ -15,6 +15,7 @@ declare var $:any;
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;		
+  loginError: boolean = false;
   constructor(private router: Router,
   			  private authService: AuthService,
   			  private fb: FormBuilder) { }
@@ -28,16 +29,20 @@ export class LoginComponent implements OnInit {
   		this.loginForm = this.fb.group({
   			email: ['', Validators.compose([Validators.required])],
   			password: ['', Validators.compose([Validators.required])]
-  		})
+  		});
+      this.loginForm.controls.password.valueChanges.subscribe(() => {
+        console.log(this.loginForm.controls.email)
+      })
   }
   
   doLogin(): void {
   	this.authService.doLogin(this.loginForm.value)
   			.subscribe((response: HttpResponse<{ [key: string]: any }>) => {
   				console.log('Ok');
-          // this.router.nave
   			}, (response: HttpErrorResponse) => {
+          this.loginError = true;
   				console.error(response);
+
   			})
   }
 

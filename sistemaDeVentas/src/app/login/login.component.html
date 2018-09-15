@@ -8,25 +8,30 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form [formGroup] = "loginForm">
+				<form [formGroup] = "loginForm" (submit) = "doLogin()">
 					<div class="form-group">						
 						<input type="text" name="username" class="form-control" placeholder="Username" formControlName = "email">
 					</div>	
-					<div class="alert alert-danger" role="alert">
-						El usuario no existe o esta mal escrito.
+					<div class="alert alert-danger" role="alert" *ngIf = "loginForm.controls.email.touched && loginForm.controls.email.errors ? loginForm.controls.email.errors.required : false">
+						El email es requerido
 					</div>
 					<div class="form-group">						
 						<input type="password" name="password" class="form-control" placeholder="Password" formControlName = "password">
 					</div>	
-					<div class="alert alert-danger" role="alert">
-						La contraseña esta mal escrita.
+					<div class="alert alert-danger" role="alert" *ngIf = "loginForm.controls.password.touched && loginForm.controls.password.errors ? loginForm.controls.password.errors.required : false">
+						La contraseña es requerida.
 					</div>
+					<div class="alert alert-danger" role="alert" *ngIf = "loginError">
+						Sus credenciales son incorrectas.
+					</div>
+					
+					<button class="btn btn-dark" type="submit" [disabled]="loginForm.invalid">
+						Ingresar
+					</button>
+			
 				</form>	
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-dark">
-					Ingresar
-				</button>
 			</div>
 		</div>
 	</div>

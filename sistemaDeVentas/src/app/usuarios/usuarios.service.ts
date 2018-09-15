@@ -9,13 +9,12 @@ const options = {
 	'observe': 'response' as 'body'
 }
 @Injectable()
-export class ventasService {
+export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-
-  createVenta(venta: { [key: string]: any }): Observable<HttpResponse<{ [key: string]: any }>> {
-  	return this.http.post(API_URL + '/ventas', venta, options)
+  findAll(): Observable<HttpResponse<{ [key: string]: any }>> {
+  	return this.http.get(API_URL + '/usuarios')
   		.pipe(
   				map((response: HttpResponse<{ [key: string]: any }>) => { 
   					return response; 
