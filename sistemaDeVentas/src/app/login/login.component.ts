@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 declare var $:any;
 @Component({
@@ -10,7 +10,7 @@ declare var $:any;
 
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   	$('#modalLogin').modal('show');
