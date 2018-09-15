@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { PedidosModule } from './pedidos/pedidos.module';
 import { VentasModule } from './ventas/ventas.module';
 import { LoginModule } from './login/login.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { JwtHelper } from 'angular2-jwt';
+import { AuthService } from '../auth/auth.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { LoginModule } from './login/login.module';
     BrowserModule,
     PedidosModule,
     VentasModule,
-    LoginModule
+    LoginModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ JwtHelper, AuthService ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
