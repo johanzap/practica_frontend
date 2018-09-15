@@ -5,7 +5,6 @@ import { HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/ht
 import  { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 declare var $:any;
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
