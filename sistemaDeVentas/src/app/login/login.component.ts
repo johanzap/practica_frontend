@@ -12,7 +12,7 @@ declare var $:any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-	
+
   loginForm: FormGroup;		
   constructor(private router: Router,
   			  private authService: AuthService,
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   			password: ['', Validators.compose([Validators.required])]
   		})
   }
-
+  
   doLogin(): void {
   	this.authService.doLogin(this.loginForm.value)
   			.subscribe((response: HttpResponse<{ [key: string]: any }>) => {

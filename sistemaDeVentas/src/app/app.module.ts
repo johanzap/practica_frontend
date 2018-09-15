@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { PedidosModule } from './pedidos/pedidos.module';
 import { VentasModule } from './ventas/ventas.module';
 import { LoginModule } from './login/login.module';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
