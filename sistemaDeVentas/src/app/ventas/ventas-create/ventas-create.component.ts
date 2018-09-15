@@ -9,7 +9,7 @@ import { HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/ht
   providers: [ UsuariosService ]
 })
 export class VentasCreateComponent implements OnInit {
-
+	clientes: any[] = [];
   constructor(private usuariosService: UsuariosService) { }
 
   ngOnInit() {
@@ -19,7 +19,16 @@ export class VentasCreateComponent implements OnInit {
   getUsuarios() {
   	this.usuariosService.findAll()
   		.subscribe((response: HttpResponse<{ [key: string]: any }>) => {
-  			console.log(response.body);
+  			this.clientes = response.body.filter((e) => {
+  				let val = false;
+  				e.rolesList.forEach((role) => {
+  					if (role.id == 'USER') {
+  						val = true;
+  					}
+  				});
+  				return val;
+  			});
+  			console.log(this.clientes);
   		})
   }
 

@@ -14,7 +14,7 @@ export class UsuariosService {
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<HttpResponse<{ [key: string]: any }>> {
-  	return this.http.get(API_URL + '/usuarios')
+  	return this.http.get(API_URL + '/usuarios', options)
   		.pipe(
   				map((response: HttpResponse<{ [key: string]: any }>) => { 
   					return response; 
