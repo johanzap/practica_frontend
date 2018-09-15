@@ -40,8 +40,9 @@ export class LoginComponent implements OnInit {
   			.subscribe((response: HttpResponse<{ [key: string]: any }>) => {
   				console.log('Ok');
   			}, (response: HttpErrorResponse) => {
-  				console.error(response);
           this.loginError = true;
+  				console.error(response);
+
   			})
   }
 
