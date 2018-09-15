@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import  { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 declare var $:any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ AuthService ]
 })
 export class LoginComponent implements OnInit {
 
